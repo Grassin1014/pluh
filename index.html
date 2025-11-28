@@ -1,0 +1,629 @@
+<head>
+<div class="strokeme"><h2>MathsiteV2 ✧COLOR UPDATE✧</h2></div>
+<!--theyll never know-->
+<title> Inbox (404) @blahblahblah </title>
+<div class="strokeme"><p>its here!</p></div>
+<!--splash text is just so fun-->
+<link href='https://fonts.googleapis.com/css2?family=Saira+Stencil+One&Display' rel='stylesheet'>
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<!--i have learned the art of styling FINALLY-->
+<style>
+body {
+    text-decoration:none; font-family: 'Saira Stencil One';font-size: 36px; color: #f502e9;
+    a:link {
+  text-decoration: none;
+
+
+}
+}
+.embedtext {
+  text-align: center;
+}
+.link-button {
+  color:#ffffff;
+  background-color: transparent;
+  text-decoration: none;
+  stroke-width: 20px; /* it still no work */
+  font-family: 'Saira Stencil One';font-size: 36px; color: #ffffff;
+  text-shadow: -1px -1px 0 #580071, 1px -1px 0 #580071, -1px 1px 0 #580071, 1px 1px 0 #580071;
+}
+a:visited {
+  color:#c0c0c0;
+  background-color: transparent;
+  text-decoration: none;
+}
+.link-button:hover {
+  color:rgb(219, 219, 219);
+  background-color: transparent;
+  text-decoration: none;
+  font-family: 'Saira Stencil One';font-size: 36px; color: #ffffff;
+  text-shadow: -1px -1px 0 #580071, 1px -1px 0 #580071, -1px 1px 0 #580071, 1px 1px 0 #580071;
+}
+a:active {
+  color:#e2dfe4;
+  background-color: transparent;
+  outline-color:black;
+}
+.strokeme {
+  color: white;
+  background-color: transparent;
+  text-shadow: -1px -1px 0 #580071, 1px -1px 0 #580071, -1px 1px 0 #580071, 1px 1px 0 #580071;
+  font-size: 36px;
+}
+#embed_a {
+  display: block; /*idk y the hell this part stopped working recently (So i added this block of code)*/
+  margin: auto;
+  width: 99%;
+}
+.outline-container {
+  /* shadow bullshit from google blah blah blah */
+  overflow: hidden;
+  /* blah blah blah */
+  border-radius: 10px;
+  /* why do i even need this bro */
+  box-shadow: inset 0 0 15px 5px rgba(0, 0, 0, 0.5);
+  /* not worth my time bruh */
+  border: 5px solid #000000;
+}
+
+.search-container {
+    text-align: center;
+    margin: 20px 0;
+}
+#linkSearch {
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #580071;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 500px;
+    color: white;
+    background-color: black;
+}
+
+button {
+  font-size: 18px;
+  color: #222;
+  font-family: inherit;
+  font-weight: 800;
+  cursor: pointer;
+  position: relative;
+  border: none;
+  background: none;
+  text-transform: uppercase;
+  transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition-duration: 400ms;
+  transition-property: color;
+  
+}
+
+button:focus,
+button:hover {
+  color: #ffffff;
+}
+
+button:focus:after,
+button:hover:after {
+  width: 100%;
+  left: 0%;
+}
+
+button:after {
+  content: "";
+  pointer-events: none;
+  bottom: -2px;
+  left: 50%;
+  position: absolute;
+  width: 0%;
+  height: 8px;
+  background-color: #ffffff;
+  text-shadow: 2px #580071;
+  transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition-duration: 400ms;
+  transition-property: width, left;
+}
+
+
+.embedded-content {
+  width: 100%;
+  height: 100%;
+  border: none;
+  /* To ensure the shadow is visible on top of the content */
+  position: relative;
+  z-index: 1;
+   /* CSS to make the buttons look and behave like links */
+  
+
+    /* Add a little margin for spacing between the buttons */
+    p {
+      margin-bottom: 5px;
+      margin-top: 5px;
+    }
+}
+</style>
+</head>
+<body>
+<!--i have now aqquired the knowledge of my actual own fucking code-->
+<div id="embed-wrapper">
+<div class="outline-container"><embed src="https://evilmonke.github.io" id="embed_a" height="99%" width="99%" type="text/html" allowfullscreen allow="fullscreen" sandbox="allow-scripts allow-forms allow-same-origin" ></div></div>
+<div class="search-container">
+   <div class="strokeme"><p style="font-size: 24px;"> no more search bar, if you want one, than the cool underline animation has gotta go </p> </div>
+</div>
+<script>
+    // dont fw color picker
+    document.addEventListener('DOMContentLoaded', () => {
+        const colorPicker = document.getElementById('strokeColor');
+        const sizePicker = document.getElementById('strokeSize');
+        const sizeValueDisplay = document.getElementById('sizeValue');
+        const strokemeElements = document.querySelectorAll('.strokeme');
+        
+        const COLOR_STORAGE_KEY = 'strokemeColor';
+        const SIZE_STORAGE_KEY = 'strokemeSize';
+        const DEFAULT_COLOR = '#580071';
+        const DEFAULT_SIZE = '1';
+
+        // apply shi
+        function applyStroke(color, size) {
+            // beep beep *robot noises*
+            const shadowValue = 
+                `-${size}px -${size}px 0 ${color}, ` +
+                `${size}px -${size}px 0 ${color}, ` +
+                `-${size}px ${size}px 0 ${color}, ` +
+                `${size}px ${size}px 0 ${color}`;
+
+            strokemeElements.forEach(element => {
+                element.style.textShadow = shadowValue;
+            });
+            sizeValueDisplay.textContent = size;
+        }
+        
+        // y'ro'ue are saved
+        function loadSettings() {
+            const savedColor = localStorage.getItem(COLOR_STORAGE_KEY);
+            const savedSize = localStorage.getItem(SIZE_STORAGE_KEY);
+
+            // save or bust
+            const currentColor = savedColor || DEFAULT_COLOR;
+            const currentSize = savedSize || DEFAULT_SIZE;
+
+            // idk
+            colorPicker.value = currentColor;
+            sizePicker.value = currentSize;
+
+            // the process comes to a close
+            applyStroke(currentColor, currentSize);
+        }
+
+        // saveing your ahh
+        function saveSettings() {
+            localStorage.setItem(COLOR_STORAGE_KEY, colorPicker.value);
+            localStorage.setItem(SIZE_STORAGE_KEY, sizePicker.value);
+        }
+
+        // your copy literally would not work without ts
+        loadSettings();
+
+        // text stroke works
+        colorPicker.addEventListener('input', () => {
+            applyStroke(colorPicker.value, sizePicker.value);
+            saveSettings();
+        });
+
+        sizePicker.addEventListener('input', () => {
+            applyStroke(colorPicker.value, sizePicker.value);
+            saveSettings();
+        });
+    });
+
+</script>
+  <script>
+    // pick element
+    const embedElement = document.getElementById('embed_a');
+
+
+    document.addEventListener('keydown', (event) => {
+        // f
+        if (event.key === 'f' || event.key === 'F') {
+            // duh te browser wanna do this
+            if (document.fullscreenElement) {
+                // force duh browser to do this
+                document.exitFullscreen();
+            } else {
+                // try asking nicely i guess
+                if (embedElement.requestFullscreen) {
+                    embedElement.requestFullscreen().catch(err => {
+                        console.error(`beep boop error message (fullscreen no work): ${err.message}`);
+                    });
+                }
+            }
+        }
+    });
+ // load url, you would have to code the websites in yourself if this didn't work
+    function loadEmbed(url) {
+        embedElement.src = url;
+    }
+
+
+    // click something
+    function handleEmbedClick() {
+        const currentSrc = embedElement.src;
+        // replace thing each time
+        embedWrapper.innerHTML = '';
+        const newEmbed = document.createElement('embed');
+        newEmbed.src = currentSrc;
+        newEmbed.id = 'embed_a';
+        newEmbed.height = '99%';
+        newEmbed.width = '99%';
+        newEmbed.type = 'text/html';
+        newEmbed.allowfullscreen = 'true';
+        newEmbed.allow = 'fullscreen';
+        embedWrapper.appendChild(newEmbed);
+
+
+        // listen
+        document.getElementById('embed_a').addEventListener('click', handleEmbedClick);
+    }
+
+
+    // std injector i guess
+    embedElement.addEventListener('click', handleEmbedClick);
+
+
+</script>
+<!--i did not enjoy how long this took-->
+<div class="strokeme" id="linkList">
+<!--rework no work blah blah code blah blah "essential script missing" stfu just work-->
+<div class="embedtext">
+<p><button class="strokeme" class="link-button" data-href="https://evilmonke.github.io" onclick="loadEmbed(this.getAttribute('data-href')); return false;">Monkey</button></p>
+<p><button class="strokeme" class="link-button" data-href="http://legalizenuclearbombs5.github.io/" onclick="loadEmbed(this.getAttribute('data-href')); return false;">a lot of stuffs</button></p>
+<p><button class="strokeme" class="link-button" data-href="https://slither.io" onclick="loadEmbed(this.getAttribute('data-href')); return false;">Slither.io</button></p>
+<p><button class="strokeme" class="link-button" data-href="https://aniwatchtv.to/" onclick="loadEmbed(this.getAttribute('data-href')); return false;">Anime</button></p>
+<p><button class="strokeme" class="link-button" data-href="https://dddavit.github.io/subway" onclick="loadEmbed(this.getAttribute('data-href')); return false;">Subway surfers</button></p>
+<p><button class="strokeme" class="link-button" data-href="https://www.friv.com/z/games/basketchamps/game.html" onclick="loadEmbed(this.getAttribute('data-href')); return false;">basket champs</button></p>
+<p><button class="strokeme" class="link-button" data-href="https://ubg365.github.io/gunspin/play.html" onclick="loadEmbed(this.getAttribute('data-href')); return false;">Spin</button></p>
+<p><button class="strokeme" class="link-button" data-href="https://mathplayground.com" onclick="loadEmbed(this.getAttribute('data-href')); return false;">PANIC</button></p>
+<p><button class="strokeme" class="link-button" data-href="https://freegames.org/blackjack/" onclick="loadEmbed(this.getAttribute('data-href')); return false;">BLACKJACK</button></p>
+<p><button class="strokeme" class="link-button" data-href="https://pokerpatio.com/sp" onclick="loadEmbed(this.getAttribute('data-href')); return false;">POKER</button></p>
+<p><button class="strokeme" class="link-button" data-href="https://solitaire.io/" onclick="loadEmbed(this.getAttribute('data-href')); return false;">SOLITARE</button></p>
+<p><button class="strokeme" class="link-button" data-href="https://playpager.com/roulette/" onclick="loadEmbed(this.getAttribute('data-href')); return false;">ROULETTE</button></p>
+<p><button class="strokeme" class="link-button" data-href="https://lolbeans.io/" onclick="loadEmbed(this.getAttribute('data-href')); return false;">Beans Lol</button></p>
+<p><button class="strokeme" class="link-button" data-href="https://littlealchemy2.com/" onclick="loadEmbed(this.getAttribute('data-href')); return false;">Little alchemy 2</button></p>
+<p><button class="strokeme" class="link-button" data-href="https://art.fullsusmtb.org/" onclick="loadEmbed(this.getAttribute('data-href')); return false;">a bunch of stuff</button></p>
+<p><button class="strokeme" class="link-button" data-href="https://swordslasher.com/games/ovo3/" onclick="loadEmbed(this.getAttribute('data-href')); return false;">OVO Dimensions (ovo 3)</button></p>
+<p><button class="strokeme" class="link-button" data-href="https://poki.to" onclick="loadEmbed(this.getAttribute('data-href')); return false;">poki (kids version is the only one that works)</button></p>
+<p><button class="strokeme" class="link-button" data-href="https://were-on-vortex-of-course-were-all-catboys.studentvue.my.cdn.cloudflare.net/" onclick="loadEmbed(this.getAttribute('data-href')); return false;">Proxy (a lot of delay for booting)</button></p>
+<p><button class="strokeme" class="link-button" data-href="https://ovo.drakeerv.com/" onclick="loadEmbed(this.getAttribute('data-href')); return false;">OVO mod home</button></p>
+<p><button class="strokeme" class="link-button" data-href="https://gooberdash.winterpixel.io/" onclick="loadEmbed(this.getAttribute('data-href')); return false;">Goober Dash</button></p>
+<p><button class="strokeme" class="link-button" data-href="https://monstertracks.github.io/go/class-368.html#" onclick="loadEmbed(this.getAttribute('data-href')); return false;">Make It Meme</button></p>
+<p><button class="strokeme" class="link-button" data-href="https://infinite-craft.com" onclick="loadEmbed(this.getAttribute('data-href')); return false;">Infinite Craft</button></p>
+<p><button class="strokeme" class="link-button" data-href="https://geometrydash-game.io/bullet-bros" onclick="loadEmbed(this.getAttribute('data-href')); return false;">Bullet Bros</button></p>
+<p><button class="strokeme" class="link-button" data-href="https://monstertracks.github.io" onclick="loadEmbed(this.getAttribute('data-href')); return false;">Monster Tracks</button></p>
+<p><button class="strokeme" class="link-button" data-href="https://glamorous-traci-mathgames-9a92ea84.koyeb.app/" onclick="loadEmbed(this.getAttribute('data-href')); return false;">Interstellar (new shuttle)</button></p>
+<p><button class="strokeme" class="link-button" data-href="https://snow-rider.io/" onclick="loadEmbed(this.getAttribute('data-href')); return false;">Snow Rider 3d</button></p>
+<p><button class="strokeme" class="link-button" data-href="https://www.mathnook.com/" onclick="loadEmbed(this.getAttribute('data-href')); return false;">Mathnook</button></p>
+<p><button class="strokeme" class="link-button" data-href="https://object-lesson.github.io/" onclick="loadEmbed(this.getAttribute('data-href')); return false;">Classroom 15x</button></p>
+<p><button class="strokeme" class="link-button" data-href="https://optical.toys/" onclick="loadEmbed(this.getAttribute('data-href')); return false;">Optical Toys</button></p>
+<p><button class="strokeme" class="link-button" data-href="https://escaperoad.io/" onclick="loadEmbed(this.getAttribute('data-href')); return false;">Escape Road</button></p>
+<p><button class="strokeme" class="link-button" data-href="https://escaperoad2.io/" onclick="loadEmbed(this.getAttribute('data-href')); return false;">Escape Road 2</button></p>
+<p><button class="strokeme" class="link-button" data-href="https://www.hoodamath.com/games/unblocked.html" onclick="loadEmbed(this.getAttribute('data-href')); return false;">More games</button></p>
+<p><button class="strokeme" class="link-button" data-href="https://easyfun.gg" onclick="loadEmbed(this.getAttribute('data-href')); return false;">Easyfun</button></p>
+<p><button class="strokeme" class="link-button" data-href="https://unblocked-games.s3.amazonaws.com/index.html" onclick="loadEmbed(this.getAttribute('data-href')); return false;">Even more games</button></p>
+<p><button class="strokeme" class="link-button" data-href="https://slowroads.io/" onclick="loadEmbed(this.getAttribute('data-href')); return false;">Slowroads</button></p>
+<p><button class="strokeme" class="link-button" data-href="https://cu.global.ssl.fastly.net/" onclick="loadEmbed(this.getAttribute('data-href')); return false;">Shuttle</button></p>
+<p><button class="strokeme" class="link-button" data-href="https://blockblast.org/blaze-drifter" onclick="loadEmbed(this.getAttribute('data-href')); return false;">Blaze drift</button></p>
+<p><button class="strokeme" class="link-button" data-href="https://www.calculator.net/" onclick="loadEmbed(this.getAttribute('data-href')); return false;">Calculator</button></p>
+<p><button class="strokeme" class="link-button" data-href="https://azgames.io/traffic-road" onclick="loadEmbed(this.getAttribute('data-href')); return false;">Traffic Road</button></p>
+<p><button class="strokeme" class="link-button" data-href="https://azgames.io/" onclick="loadEmbed(this.getAttribute('data-href')); return false;">Az games</button></p>
+<p>put in poki in shuttle search bar click poki. (if you want poki)</p>
+<!--we don't need this no more but i keep it for nostalgia, the good old days when shuttle FUCKING WORKED-->
+</div>
+</div>
+
+
+
+<script>
+  function loadEmbed(url) {
+    const embed = document.getElementById('embed_a');
+    embed.src = url;
+  }
+  function filterLinks() {
+    const input = document.getElementById('linkSearch').value.toLowerCase();
+    const linkList = document.getElementById('linkList');
+    const links = linkList.getElementsByTagName('a');
+    
+    for (let i = 0; i < links.length; i++) {
+        const linkText = links[i].textContent.toLowerCase();
+        const parentParagraph = links[i].parentElement;
+        
+        if (linkText.includes(input)) {
+            parentParagraph.style.display = ""; // peeka boo part 1
+        } else {
+            parentParagraph.style.display = "none"; // peeka boo part 2
+        }
+    }
+}
+
+
+</script>
+<!-- why don't i remove this? i dont feel like it-->
+<div class="strokeme"class="container">
+  <h1>URL to Embed Loader</h1>
+  <div class="input-section">
+    <input type="text" id="urlInput" placeholder="Enter URL (include https://)" 
+           onkeypress="if(event.key === 'Enter') loadUrl()">
+    <button id="loadButton" onclick="loadUrl()">Load URL</button>
+  </div>
+</div>
+<!-- what this do-->
+<script>
+  function loadUrl() {
+    const urlInput = document.getElementById('urlInput');
+    const embed = document.getElementById('embed_a');
+    
+    const url = urlInput.value.trim();
+    if (url) {
+      const validUrl = url.startsWith('http://') || url.startsWith('https://') 
+        ? url 
+        : `https://${url}`;
+      embed.src = validUrl;
+    } else {
+      alert('put a real url dumbahh');
+    }
+  }
+</script>
+<div class="strokeme">
+<p>not meant to be used at school</p><head>
+
+
+<p>if you want new stuff you should probably email me on my home email</p>
+_______________________________________________________________________
+<p>Made by Grayson Mosier ©2025 (graysonmosier14@gmail.com)</p>
+not made for school
+<!--it toatally is not and i dont even have any copyright on this-->
+<!--FUCK YOU MAX, beep boop "stolen code detected" boop boop-->
+<!--this dumb fuck copied my code an put it into chatgpt-->
+<!--no more terms and conditions for you, do whatever you want i guess-->
+</div>
+
+
+
+<script src="https://cdn.commoninja.com/sdk/latest/commonninja.js" defer></script>
+<div class="commonninja_component pid-2c6dfa4b-aac8-4fd1-b7c0-56d2aad34864"></div>
+
+
+
+<div class="strokeme">
+<p> v10 this is what you all were waiting for </p>
+
+
+
+
+<p>Patch notes:
+  i added goodies
+  AND ROULETTE your welcome michael
+</p>
+</div>
+
+<div> <div class="strokeme">
+      <label for="strokeColor">Change Stroke Color:</label>
+      <input type="color" id="strokeColor" value="#580071">
+   </div>
+   <div> <div class="strokeme">
+       <label for="strokeSize">Change Stroke Size (px):</label>
+       <!-- Min 0px, Max 5px, default 1px -->
+       <input type="range" id="strokeSize" min="1" max="10" value="1" step="0.5"> 
+       <span id="sizeValue">1</span>px
+   </div>
+</div>
+</div>
+</div>
+</div>
+
+  <div class="strokeme"><title>Change your background!</title>
+  <p> change you background by going to an image on google, right clicking it and hitting: Copy image adress.
+     (Then paste it in the box) </p>
+     <head>
+     </div>
+      <style>
+          body {
+              transition: background-poisition 0.5s ease-in-out;
+              background-size: cover;
+              background-position: center;
+              background-attachment: fixed;
+          }
+          input, button {
+              padding: 10px;
+              margin: 10px;
+              font-size: 16px;
+          }
+      </style>
+  </head>
+  <body>
+  <head>
+    <meta charset="UTF-8">
+    <title>Change Background with Local Storage</title>
+    <style>
+        body {
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            transition: background-image 0.5s ease-in-out;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .controls {
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        input[type="text"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 300px;
+            margin-right: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #87009f82;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="strokeme" class="controls">
+        <h2>Enter Image URL to Change Background</h2>
+        <input type="text" id="bgUrl" placeholder="Enter image URL...">
+        <button onclick="changeBackground()">Go</button>
+    </div>
+
+
+    <script>
+        // i will not be questioning this magic
+        function loadBackground() {
+            const savedBg = localStorage.getItem('backgroundImage');
+            if (savedBg) {
+                document.body.style.backgroundImage = `url('${savedBg}')`;
+            } else {
+                //Grayson whispers to you: if this breakes im not fixing it
+                document.body.style.backgroundColor = "#e0e0e0";
+                document.body.style.backgroundImage = "none";
+            }
+        }
+
+
+        // save thing
+        function changeBackground() {
+            const url = document.getElementById('bgUrl').value;
+            if (url) {
+                document.body.style.backgroundImage = `url('${url}')`;
+                localStorage.setItem('backgroundImage', url); // Save to localStorage
+            }
+        }
+
+
+        // make it happen i thinks
+        window.addEventListener('load', loadBackground);
+    </script>
+</body>
+  </body>
+</style>
+</head>
+<body>
+  <div class="strokeme" class="container">
+    <h1>URL to game thing loader</h1>
+    <div class="input-section">
+      <input type="text" id="urlInput" placeholder="put url here make it have https://" onkeypress="if(event.key === 'Enter') loadUrl()">
+      <button id="loadButton" onclick="loadUrl()">load</button>
+
+
+
+
+  <script>
+    function loadUrl() {
+      const urlInput = document.getElementById('urlInput');
+      const contentFrame = document.getElementById('iframe_a');
+      
+      const url = urlInput.value.trim();
+      if (url) {
+        // Make sure URL has a protocol
+        const validUrl = url.startsWith('http://') || url.startsWith('https://') 
+          ? url 
+          : `https://${url}`;
+        
+        contentFrame.src = validUrl;
+      } else {
+        alert('bruh it is not that hard to find an image');
+      }
+    }
+  </script>
+</body>
+</body>
+<h1>Customizable Tab Cloaker</h1>
+<div>
+    <label for="newTitle">New Tab Title:</label>
+    <input type="text" id="newTitle" value="Google">
+</div>
+<div>
+    <label for="newFavicon">New Favicon URL:</label>
+    <input type="text" id="newFavicon" value="https://www.google.com/favicon.ico">
+</div>
+<button onclick="cloakTab()">Cloak Tab</button>
+<button onclick="resetTab()">Reset Tab</button>
+
+
+<script>
+let originalTitle = document.title;
+let originalFaviconHref = document.querySelector('link[rel*="icon"]').href; // Store href
+
+
+// why tf does this not workkk
+function applyCloakedSettings() {
+    const storedTitle = localStorage.getItem('cloakedTitle');
+    const storedFavicon = localStorage.getItem('cloakedFavicon');
+
+
+    if (storedTitle) {
+        document.title = storedTitle;
+    }
+    if (storedFavicon) {
+        let link = document.querySelector('link[rel*="icon"]') || document.createElement('link');
+        link.type = 'image/x-icon';
+        link.rel = 'shortcut icon';
+        link.href = storedFavicon;
+        document.getElementsByTagName('head')[0].appendChild(link);
+    }
+}
+
+
+function cloakTab() {
+    const newTitle = document.getElementById('newTitle').value;
+    const newFaviconUrl = document.getElementById('newFavicon').value;
+
+
+    // character select ass thing
+    document.title = newTitle;
+    localStorage.setItem('cloakedTitle', newTitle);
+
+
+    // put into the freezer
+    let link = document.querySelector('link[rel*="icon"]') || document.createElement('link');
+    link.type = 'image/x-icon';
+    link.rel = 'shortcut icon';
+    link.href = newFaviconUrl;
+    document.getElementsByTagName('head')[0].appendChild(link);
+    localStorage.setItem('cloakedFavicon', newFaviconUrl);
+}
+
+
+function resetTab() {
+    // Reset title and remove from localStorage
+    document.title = originalTitle;
+    localStorage.removeItem('cloakedTitle');
+
+
+    // Reset favicon and remove from localStorage
+    let currentFavicon = document.querySelector('link[rel*="icon"]');
+    if (currentFavicon) {
+        currentFavicon.remove();
+    }
+    // Re-create the original favicon link
+    let originalLink = document.createElement('link');
+    originalLink.type = 'image/x-icon';
+    originalLink.rel = 'shortcut icon';
+    originalLink.href = originalFaviconHref;
+    document.getElementsByTagName('head')[0].appendChild(originalLink);
+    localStorage.removeItem('cloakedFavicon');
+}
+
+
+// Apply cloaked settings when the page loads
+window.onload = applyCloakedSettings;
+</script>
+<!--same exact grayson makin this as before-->
+<!--hi IT, I know you're looking, i really dislike that a rat gave you this code, but, I am under no obligation to take this down as this wasn't made for school and I use it at home, I cannot control how other children use it
+and how it is shared. I am looking to not get in trouble, so if you want me to stop updating this website I will. (i just can't take it down.)-->
